@@ -1,9 +1,35 @@
-import example.pepita
+import example.*
 
-describe "group of tests for pepita" {
+describe "group of tests for Pepe" {
 
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
+  test "Pepe es categoria cadete, tiene el bono por presentismo A y el bono por resultados A y no falto ningun dia" {
+    pepe.categoria(cadete)
+    pepe.bonoPresentismo(bonoPresentismoA)
+    pepe.bonoResultados(bonoResultadosA)
+    assert.equals(1750, pepe.sueldo())
   }
 
+  test "Pepe es categoria gerente, tiene el bono por presentismo A y el bono por resultados A y falto 1 dia" {
+    pepe.categoria(gerente)
+    pepe.bonoPresentismo(bonoPresentismoA)
+    pepe.bonoResultados(bonoResultadosA)
+    pepe.faltar()
+    assert.equals(1150, pepe.sueldo())
+  }
+
+    test "Pepe es categoria cadete, tiene el bono por presentismo B y el bono por resultados C y no falto ningun dia" {
+    pepe.categoria(cadete)
+    pepe.bonoPresentismo(bonoPresentismoB)
+    pepe.bonoResultados(bonoResultadosC)
+    assert.equals(1500, pepe.sueldo())
+  }
+
+    test "Pepe es categoria gerente, tiene el bono por presentismo A y el bono por resultados B y falto 2 dias" {
+    pepe.categoria(gerente)
+    pepe.bonoPresentismo(bonoPresentismoA)
+    pepe.bonoResultados(bonoResultadosB)
+    pepe.faltar()
+    pepe.faltar()
+    assert.equals(1080, pepe.sueldo())
+  }
 }
